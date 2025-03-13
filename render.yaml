@@ -1,7 +1,7 @@
 databases:
   - name: seni
     databaseName: seni
-    user: intervention_user
+    user: root
 
 services:
   - type: web
@@ -19,8 +19,8 @@ services:
       - key: DEBUG
         value: "False"
       - key: DJANGO_SUPERUSER_USERNAME
-        value: "admin"  # Personnalise selon tes besoins
+        value: "admin"
       - key: DJANGO_SUPERUSER_EMAIL
-        value: "admin@example.com"  # Personnalise selon tes besoins
+        value: "admin@example.com"
       - key: DJANGO_SUPERUSER_PASSWORD
-        value: "adminpassword"  # Personnalise selon tes besoins (garde-le sécurisé)
+        value: "adminpassword"
