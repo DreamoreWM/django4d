@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -134,15 +135,20 @@ WSGI_APPLICATION = 'intervention_management.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'gestion_intervention_db',
-        'USER': 'root',  # Remplace par ton utilisateur MySQL
-        'PASSWORD': '',  # Remplace par ton mot de passe MySQL
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
 }
+
+# Sécurité : active ces lignes si tu testes localement avec MySQL
+# DATABASES['default'] = {
+#     'ENGINE': 'django.db.backends.mysql',
+#     'NAME': 'gestion_intervention_db',
+#     'USER': 'root',
+#     'PASSWORD': '',
+#     'HOST': 'localhost',
+#     'PORT': '3306',
 
 
 
