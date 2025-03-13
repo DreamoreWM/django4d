@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        <img src="https://i0.wp.com/www.seni.fr/wp-content/uploads/2022/02/cropped-SENI_Clair_CMJN-1.jpg?resize=150%2C107&ssl=1" height="40px" />
+    </a>
+    SENI 4D
+</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
