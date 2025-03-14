@@ -10,7 +10,11 @@ def create_superuser():
 
     if not User.objects.filter(username=username).exists():
         print(f"Creating superuser with username: {username}")
-        call_command('createsuperuser', interactive=False, username=username, email=email, password=password)
+        # Utilise un script personnalisé pour créer l'utilisateur
+        from django.db import transaction
+        with transaction.atomic():
+            user = User.objects.create_superuser(username=username, email=email, password=password)
+            print(f"Superuser {username} created successfully.")
     else:
         print(f"Superuser {username} already exists.")
 
